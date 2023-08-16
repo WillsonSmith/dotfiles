@@ -23,7 +23,7 @@ local tree_sitter_config = {
       "regex",
     },
     highlight = {
-      enabled = true
+      enable = true
     },
     context_commentstring = {
       enable = true

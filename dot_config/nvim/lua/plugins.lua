@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 -- Make sure to set `mapleader` before lazy so mappings are correct
-
 require("lazy").setup({
   {
     "folke/neodev.nvim",
@@ -76,10 +75,10 @@ require("lazy").setup({
 
   require('plugins/lsp_config'),
   require('plugins/mason');
+  require('plugins/cmp'),
   require('plugins/null_ls'),
   require('plugins/tree_sitter'),
   require('plugins/lualine'),
-  require('plugins/cmp'),
   require('plugins/dashboard'),
   require('plugins/telescope'),
   require('plugins/tree'),

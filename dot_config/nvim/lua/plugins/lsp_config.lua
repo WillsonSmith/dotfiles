@@ -70,8 +70,6 @@ local lsp_config = {
       capabilities = capabilities,
     }
 
-    lspconfig.custom_elements_ls.setup{}
-
     lspconfig.lua_ls.setup {
       capabilities = capabilities,
       settings = {
