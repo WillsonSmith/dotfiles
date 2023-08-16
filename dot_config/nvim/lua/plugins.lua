@@ -46,6 +46,7 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       vim.opt.termguicolors = true
+      -- Sets the colors for the indent lines
       vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
       vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
       vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
@@ -58,6 +59,8 @@ require("lazy").setup({
 
       require('indent_blankline').setup{
         space_char_blankline = " ",
+        -- This plugin seems to overwrite the highlight group for the space character
+        -- This is a workaround to unset the highlight group
         space_char_highlight_list = {"clear"},
         char_highlight_list = {
           "IndentBlanklineIndent1",
