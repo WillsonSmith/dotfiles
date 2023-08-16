@@ -35,7 +35,14 @@ require("lazy").setup({
   "github/copilot.vim",
   "folke/which-key.nvim",
   "airblade/vim-gitgutter",
-  "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {},
+    config = function()
+      vim.opt.list = true
+      vim.opt.listchars:append "eol:↴"
+    end
+  },
 
   require('plugins/lsp_config'),
   require('plugins/mason');
