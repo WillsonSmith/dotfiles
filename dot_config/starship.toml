@@ -1,3 +1,13 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# format = '''
+# [┌───────────────────](bold green)
+# [│](bold green)$directory$rust$package
+# [└─](bold green) '''
+
+[character]
+success_symbol = '[➜](bold green)'
+
 [aws]
 symbol = "  "
 
