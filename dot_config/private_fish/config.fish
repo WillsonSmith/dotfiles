@@ -7,8 +7,9 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 fish_add_path $HOME/.local/bin
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
-alias nv="nvim"
+alias cm="chezmoi"
 alias lg="lazygit"
+alias nv="nvim"
 alias python="python3"
 
 if status is-interactive
