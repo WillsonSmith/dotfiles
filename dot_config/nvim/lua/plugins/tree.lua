@@ -4,7 +4,12 @@ local tree_config = {
     "nvim-tree/nvim-web-devicons", -- optional
   },
   config = function()
-    require("nvim-tree").setup()
+    require("nvim-tree").setup({
+      git = {
+        enable = true,
+        ignore = false
+      }
+    })
     require'nvim-web-devicons'.setup()
   end
 }
