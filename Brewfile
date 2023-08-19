@@ -20,5 +20,3 @@ brew "ripgrep"
 brew "starship"
 brew "yt-dlp"
 brew "zoxide"
-
-cask 'love'

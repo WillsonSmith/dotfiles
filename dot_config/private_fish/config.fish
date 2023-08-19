@@ -7,6 +7,11 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 fish_add_path $HOME/.local/bin
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
+# add love to path if it exists
+if test -d /Applications/love.app/Contents/MacOS
+    fish_add_path /Applications/love.app/Contents/MacOS
+end
+
 alias cm="chezmoi"
 alias lg="lazygit"
 alias nv="nvim"
