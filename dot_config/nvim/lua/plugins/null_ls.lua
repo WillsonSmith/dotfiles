@@ -27,6 +27,16 @@ local null_ls_config = {
             return utils.root_has_file("deno.json", "deno.jsonc")
           end
         }),
+        null_ls.builtins.diagnostics.stylelint.with({
+          extra_filetypes = { "typescript" },
+          condition = function(utils)
+            return utils.root_has_file(
+              ".stylelintrc",
+              ".stylelintrc.json",
+              ".stylelintrc.js"
+            )
+          end
+        }),
       },
         -- can reuse a shared lspconfig on_attach callback
         on_attach = function(client, bufnr)

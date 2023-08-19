@@ -8,12 +8,12 @@ local mason_config = {
     require("mason").setup()
     require("mason-lspconfig").setup {
       ensure_installed = {
-        "tsserver",
-        "eslint",
-        "denols",
         "custom_elements_ls",
+        "denols",
+        "eslint",
+        "lua_ls",
         "rust_analyzer",
-        "lua_ls"
+        "tsserver",
       }
     }
   end
