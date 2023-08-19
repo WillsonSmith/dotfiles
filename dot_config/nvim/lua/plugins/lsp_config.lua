@@ -76,7 +76,10 @@ local lsp_config = {
         Lua = {
           workspace = {
             checkThirdParty = false,
-          }
+          },
+          diagnostics = {
+            globals = { 'love' },
+          },
         }
       }
     }
