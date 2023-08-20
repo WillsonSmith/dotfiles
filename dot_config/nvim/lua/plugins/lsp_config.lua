@@ -47,6 +47,7 @@ local lsp_config = {
     },
   config = function()
     require("neodev").setup({})
+
     local lspconfig = require("lspconfig")
     local navic = require("nvim-navic")
 
@@ -57,6 +58,7 @@ local lsp_config = {
     end
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
     lspconfig.denols.setup {
       on_attach = on_attach,
       root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
@@ -84,9 +86,10 @@ local lsp_config = {
       }
     }
 
-    local language_servers = { 'custom_elements_ls' }
+    local language_servers = { 'custom_elements_ls', 'astro' }
     for _, lsp in ipairs(language_servers) do
       lspconfig[lsp].setup {
+        on_attach = on_attach,
         capabilities = capabilities,
       }
     end

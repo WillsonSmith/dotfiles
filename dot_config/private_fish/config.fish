@@ -2,6 +2,7 @@ starship init fish | source
 zoxide init fish | source
 
 set -Ux EDITOR nvim
+set -Ux FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
 set -Ux XDG_CONFIG_HOME $HOME/.config
 
 fish_add_path $HOME/.local/bin
