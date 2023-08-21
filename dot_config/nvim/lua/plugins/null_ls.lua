@@ -17,16 +17,6 @@ local null_ls_config = {
             return utils.root_has_file(".eslintrc.js", ".eslintrc.json", ".eslintrc")
           end
         }),
-        null_ls.builtins.diagnostics.deno_lint.with({
-          condition = function(utils)
-            return utils.root_has_file("deno.json", "deno.jsonc")
-          end
-        }),
-        null_ls.builtins.formatting.deno_fmt.with({
-          condition = function(utils)
-            return utils.root_has_file("deno.json", "deno.jsonc")
-          end
-        }),
         null_ls.builtins.diagnostics.stylelint.with({
           extra_filetypes = { "typescript" },
           condition = function(utils)
@@ -43,11 +33,11 @@ local null_ls_config = {
             if client.supports_method("textDocument/formatting") then
                 vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
                 vim.api.nvim_create_autocmd("BufWritePre", {
-                    group = augroup,
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.buf.format({async = false})
-                    end,
+                  group = augroup,
+                  buffer = bufnr,
+                  callback = function()
+                      vim.lsp.buf.format({async = false})
+                  end,
                 })
             end
         end,

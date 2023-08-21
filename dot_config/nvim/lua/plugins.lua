@@ -42,9 +42,7 @@ require("lazy").setup({
   "airblade/vim-gitgutter",
 
   require('plugins/indent_blankline'),
-  require('plugins/lsp_config'),
-  require('plugins/mason');
-  require('plugins/cmp'),
+  require('plugins/lsp_zero'),
   require('plugins/null_ls'),
   require('plugins/tree_sitter'),
   require('plugins/lualine'),
