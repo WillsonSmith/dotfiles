@@ -45,9 +45,6 @@ opt.smartindent = true
 -- Highlight current line
 opt.cursorline = true
 
--- Remove unwanted padding at the bottom of the screen
-opt.cmdheight = 0
-
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
