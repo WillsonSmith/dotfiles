@@ -16,9 +16,6 @@ vim.g.mapleader = " "
 -- Make sure to set `mapleader` before lazy so mappings are correct
 require("lazy").setup({
   {
-    "folke/neodev.nvim",
-  },
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
@@ -42,7 +39,7 @@ require("lazy").setup({
   "airblade/vim-gitgutter",
 
   require('plugins/indent_blankline'),
-  require('plugins/lsp_zero'),
+  require('plugins/lsp'),
   require('plugins/null_ls'),
   require('plugins/tree_sitter'),
   require('plugins/lualine'),
@@ -65,7 +62,7 @@ require("lazy").setup({
 
   {
     "kylechui/nvim-surround",
-    version = "*", -- use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
     opts= {}
   },
