@@ -145,9 +145,9 @@ local lsp_config = {
     })
 
     local default_setup_servers = {
-      'custom_elements_ls',
+      -- 'custom_elements_ls',
       'rust_analyzer',
-      'eslint'
+      -- 'eslint'
     }
 
     for _, lsp in ipairs(default_setup_servers) do
