@@ -43,7 +43,6 @@ require("lazy").setup({
   require('plugins/null_ls'),
   require('plugins/tree_sitter'),
   require('plugins/lualine'),
-  require('plugins/dashboard'),
   require('plugins/telescope'),
   require('plugins/tree'),
   require('plugins/toggle_terminal'),
