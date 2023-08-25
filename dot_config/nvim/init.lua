@@ -8,4 +8,5 @@ require("plugins")
 
 vim.cmd.colorscheme "catppuccin"
 
-
+vim.g.astro_typescript = 'enable'
+vim.g.astro_styles = 'enable'
