@@ -17,7 +17,7 @@ local setup_lsp_keymaps = function()
       vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, options)
       vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, options)
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, options)
-      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, options)
+      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, options)
       vim.keymap.set('n', '<leader>f', function()
         vim.lsp.buf.format({ async = true })
       end, options)
@@ -99,18 +99,26 @@ local lsp_config = {
         documentation = cmp.config.window.bordered(),
       },
       sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-      },
-      {
-        { name = 'buffer '},
-      }),
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        },
+        {
+          { name = 'buffer ' },
+        }),
     })
 
     local navic = require('nvim-navic');
     local function on_attach(client, bufnr)
-       if client.server_capabilities.documentSymbolProvider then
+      if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
+      end
+
+      if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+          end
+        })
       end
     end
 
@@ -119,7 +127,7 @@ local lsp_config = {
     lspconfig.tsserver.setup({
       on_attach = on_attach,
       capabilities = cmp_capabilities,
-      root_dir = lspconfig.util.root_pattern('tsconfig.json'),
+      root_dir = lspconfig.util.root_pattern('package.json'),
       single_file_support = false,
     })
 
