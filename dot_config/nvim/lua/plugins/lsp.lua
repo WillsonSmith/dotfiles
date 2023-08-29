@@ -72,6 +72,8 @@ local lsp_config = {
         -- Linters
         'eslint',
 
+        -- Formatters
+
         -- Misc
         'custom_elements_ls',
       }
@@ -113,7 +115,10 @@ local lsp_config = {
         navic.attach(client, bufnr)
       end
 
-      if client.supports_method("textDocument/formatting") then
+      if
+          client.server_capabilities.documentFormattingProvider
+          and client.supports_method("textDocument/formatting")
+      then
         vim.api.nvim_create_autocmd('BufWritePre', {
           callback = function()
             vim.lsp.buf.format({ async = false })
@@ -154,8 +159,8 @@ local lsp_config = {
 
     local default_setup_servers = {
       -- 'custom_elements_ls',
+      'eslint',
       'rust_analyzer',
-      -- 'eslint'
     }
 
     for _, lsp in ipairs(default_setup_servers) do
