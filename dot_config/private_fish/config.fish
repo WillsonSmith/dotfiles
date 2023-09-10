@@ -18,6 +18,10 @@ alias lg="lazygit"
 alias nv="nvim"
 alias python="python3"
 
+function sd -d "Select directory"
+  command fd . $argv[1] -t d | fzf --query="$argv[2]"
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
