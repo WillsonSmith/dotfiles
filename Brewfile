@@ -1,7 +1,9 @@
 brew "asdf"
 brew "bat"
 brew "chezmoi"
+brew "cmake"
 brew "deno"
+brew "exercism"
 brew "fd"
 brew "ffmpeg"
 brew "fish"
@@ -20,4 +22,8 @@ brew "ripgrep"
 brew "starship"
 brew "yt-dlp"
 brew "zoxide"
+
 cask "itsycal"
+
+tap "oven-sh/bun"
+brew "bun"

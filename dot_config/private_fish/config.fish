@@ -18,6 +18,8 @@ alias lg="lazygit"
 alias nv="nvim"
 alias python="python3"
 
+alias pbstrap="~/Developer/Studio/pbstrap/pbstrap"
+
 function sd -d "Select directory"
   command fd . $argv[1] -t d | fzf --query="$argv[2]"
 end

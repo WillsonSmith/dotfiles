@@ -105,7 +105,7 @@ local lsp_config = {
           { name = 'luasnip' },
         },
         {
-          { name = 'buffer ' },
+          { name = 'buffer' },
         }),
     })
 
@@ -116,6 +116,7 @@ local lsp_config = {
       end
 
       if
+          client and
           client.server_capabilities.documentFormattingProvider
           and client.supports_method("textDocument/formatting")
       then

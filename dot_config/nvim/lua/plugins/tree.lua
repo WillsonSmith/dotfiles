@@ -10,7 +10,10 @@ local tree_config = {
         ignore = false
       }
     })
-    require'nvim-web-devicons'.setup()
+    require 'nvim-web-devicons'.setup()
+
+    local api = require "nvim-tree.api"
+    vim.keymap.set('n', '<leader>e', api.tree.toggle, { noremap = true, silent = true })
   end
 }
 
