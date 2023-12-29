@@ -18,12 +18,14 @@ brew "git-lfs"
 brew "gource"
 brew "lazygit"
 brew "neovim"
+brew "postgresql", restart_service: true
 brew "ripgrep"
 brew "starship"
 brew "yt-dlp"
 brew "zoxide"
 
 cask "itsycal"
+cask "dbeaver-community"
 
 tap "oven-sh/bun"
 brew "bun"
