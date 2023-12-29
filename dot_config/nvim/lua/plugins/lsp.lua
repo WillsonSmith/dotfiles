@@ -68,6 +68,7 @@ local lsp_config = {
         'denols',
         'lua_ls',
         'rust_analyzer',
+        'astro',
 
         -- Linters
         'eslint',
@@ -162,6 +163,7 @@ local lsp_config = {
       -- 'custom_elements_ls',
       'eslint',
       'rust_analyzer',
+      'astro',
     }
 
     for _, lsp in ipairs(default_setup_servers) do
