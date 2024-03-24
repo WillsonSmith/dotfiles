@@ -24,7 +24,9 @@ brew install stow
 
 ```sh
 cd ~/.dotfiles
+stow bash
 stow fish
+stow fzf
 stow homebrew
 stow kitty
 stow nvim
