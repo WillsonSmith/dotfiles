@@ -31,6 +31,7 @@ local indent_blankline_config = {
         highlight = highlight
       },
       scope = {
+        enabled = false,
         highlight = highlight
       }
     }
