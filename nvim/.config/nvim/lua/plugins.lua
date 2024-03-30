@@ -76,20 +76,40 @@ require("lazy").setup({
   "airblade/vim-gitgutter",
 
   require('plugins/indent_blankline'),
+  require('plugins/null_ls'),
   require('plugins/lsp'),
   require('plugins/lualine'),
-  require('plugins/null_ls'),
   require('plugins/telescope'),
   require('plugins/toggle_terminal'),
   require('plugins/tree'),
-  require('plugins/tree_sitter'),
 
+  require('plugins/tree_sitter'),
   {
-    "numtostr/comment.nvim",
-    opts = {},
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    opts = {
+    },
+    config = function()
+      require('ts_context_commentstring').setup({
+        enable_autocmd = false,
+        languages = {
+          styled = '/* %s */'
+        }
+      })
+    end
+  },
+  {
+    "numtoStr/Comment.nvim",
+    opts = {
+    },
+    config = function()
+      require('Comment').setup({
+        pre_hook = require(
+          'ts_context_commentstring.integrations.comment_nvim'
+        ).create_pre_hook()
+      })
+    end,
     lazy = false
   },
-
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",

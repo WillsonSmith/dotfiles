@@ -42,6 +42,9 @@ local setup_lsp_keymaps = function()
             if client.name == 'tsserver' or client.name == 'eslint' then
               return false
             end
+            if client.name == 'custom_elements_ls' then
+              return false
+            end
             return true
           end
         }
@@ -146,7 +149,8 @@ local lsp_config = {
         navic.attach(client, bufnr)
       end
 
-      if client.name == 'tsserver' or client.name == "eslint" then
+
+      if client.name == 'tsserver' or client.name == "eslint" or client.name == 'custom_elements_ls' then
         -- disable tsserver and eslint formatting for now.
         -- we'll use prettier for formatting
         -- and eslint for linting

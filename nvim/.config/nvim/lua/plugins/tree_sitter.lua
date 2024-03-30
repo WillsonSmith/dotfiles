@@ -12,8 +12,9 @@ local tree_sitter_config = {
         "typescript",
         "tsx",
         "html",
+        "styled",
         "css",
-        "scss",
+        -- "scss",
         "json",
         "yaml",
         "lua",
@@ -22,18 +23,14 @@ local tree_sitter_config = {
         "bash",
         "dockerfile",
         "regex",
+        "vim",
+        "vimdoc"
       },
       highlight = {
         enable = true
       },
-      context_commentstring = {
-        enable = true
-      },
     }
   end,
-  dependencies = {
-    "joosepalviste/nvim-ts-context-commentstring",
-  }
 }
 
 return tree_sitter_config
