@@ -1,3 +1,11 @@
+local IGNORED_FORMATTERS = {
+  'tsserver',
+  'eslint',
+  'custom_elements_ls',
+}
+
+
+
 local function formatSwift()
   local file = vim.api.nvim_buf_get_name(0)
   local cmd = string.format('swift-format %s', file)
@@ -39,10 +47,7 @@ local setup_lsp_keymaps = function()
         vim.lsp.buf.format {
           async = true,
           filter = function(client)
-            if client.name == 'tsserver' or client.name == 'eslint' then
-              return false
-            end
-            if client.name == 'custom_elements_ls' then
+            if vim.tbl_contains(IGNORED_FORMATTERS, client.name) then
               return false
             end
             return true
@@ -149,15 +154,7 @@ local lsp_config = {
         navic.attach(client, bufnr)
       end
 
-
-      if client.name == 'tsserver' or client.name == "eslint" or client.name == 'custom_elements_ls' then
-        -- disable tsserver and eslint formatting for now.
-        -- we'll use prettier for formatting
-        -- and eslint for linting
-        -- change this so that it only disables formatting if prettier is installed
-        return
-      end
-
+      -- manual swift formatting until sourcekit-lsp acknowledges formatting support
       if client.name == 'sourcekit' then
         vim.api.nvim_create_autocmd('BufWritePre', {
           callback = function()
@@ -167,9 +164,14 @@ local lsp_config = {
         return
       end
 
+      if vim.tbl_contains(IGNORED_FORMATTERS, client.name) then
+        return
+      end
+
       if client.supports_method("textDocument/formatting") then
         vim.api.nvim_create_autocmd('BufWritePre', {
           callback = function()
+            print('formatting ' .. client.name)
             vim.lsp.buf.format({ async = false })
           end
         })
@@ -211,8 +213,6 @@ local lsp_config = {
       on_attach = on_attach,
       capabilities = completionCapabilities,
     })
-
-
 
     lspconfig.eslint.setup({
       on_attach = on_attach,

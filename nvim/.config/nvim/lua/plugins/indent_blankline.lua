@@ -3,7 +3,7 @@ local indent_blankline_config = {
   config = function()
     vim.opt.termguicolors = true
     vim.opt.list = true
-    vim.opt.listchars:append "space:·"
+    -- vim.opt.listchars:append "space:·"
 
     local highlight = {
       "RainbowRed",
@@ -27,12 +27,12 @@ local indent_blankline_config = {
     end)
 
     require("ibl").setup {
-      indent = {
-        highlight = highlight
-      },
+      -- indent = {
+      --   highlight = highlight
+      -- },
       scope = {
         enabled = false,
-        highlight = highlight
+        -- highlight = highlight
       }
     }
   end

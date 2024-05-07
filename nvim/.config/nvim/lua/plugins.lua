@@ -13,44 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- `mapleader` must be set before `lazy` is called
 vim.g.mapleader = " "
-
--- local cslsp = require('plugins/custom_lsp/server')
--- vim.api.nvim_create_autocmd(
---   { "BufRead" },
---   {
---     group = vim.api.nvim_create_augroup('custom_lsp', {}),
---     pattern = { "*.fish" },
---     callback = function()
---       print("Fish file opened")
---       -- vim.lsp.buf.formatting_sync()
---       --
---       vim.lsp.start({
---         name = 'dumdum',
---         cmd = cslsp.server({
---           capabilities = {
---             textDocument = {
---               formatting = true,
---             }
---           },
---           handlers = {
---             ['textDocument/formatting'] = function(_, params)
---               return {
---                 {
---                   range = {
---                     start = { line = 0, character = 0 },
---                     ['end'] = { line = 1, character = 0 },
---                   },
---                   newText = 'formatted'
---                 }
---               }
---             end
---           }
---         })
---       })
---     end
---   }
--- )
 require("lazy").setup({
+  {
+    "nvim-lua/plenary.nvim"
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -131,3 +97,40 @@ require("lazy").setup({
     },
   },
 })
+
+-- local cslsp = require('plugins/custom_lsp/server')
+-- vim.api.nvim_create_autocmd(
+--   { "BufRead" },
+--   {
+--     group = vim.api.nvim_create_augroup('custom_lsp', {}),
+--     pattern = { "*.fish" },
+--     callback = function()
+--       print("Fish file opened")
+--       -- vim.lsp.buf.formatting_sync()
+--       --
+--       vim.lsp.start({
+--         name = 'dumdum',
+--         cmd = cslsp.server({
+--           capabilities = {
+--             textDocument = {
+--               formatting = true,
+--             }
+--           },
+--           handlers = {
+--             ['textDocument/formatting'] = function(_, params)
+--               return {
+--                 {
+--                   range = {
+--                     start = { line = 0, character = 0 },
+--                     ['end'] = { line = 1, character = 0 },
+--                   },
+--                   newText = 'formatted'
+--                 }
+--               }
+--             end
+--           }
+--         })
+--       })
+--     end
+--   }
+-- )

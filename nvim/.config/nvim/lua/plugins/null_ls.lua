@@ -1,8 +1,9 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local augroup = vim.api.nvim_create_augroup("NullLsLspFormatting", {})
 
 local null_ls_config = {
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   config = function()
+    local scan = require 'plenary.scandir'
     local null_ls = require("null-ls")
     null_ls.setup({
       on_attach = function(client, bufnr)
@@ -12,6 +13,7 @@ local null_ls_config = {
             group = augroup,
             buffer = bufnr,
             callback = function()
+              print("formatting " .. client.name)
               vim.lsp.buf.format({ async = false })
             end,
           })
@@ -19,12 +21,20 @@ local null_ls_config = {
       end,
       sources = {
         null_ls.builtins.formatting.prettier.with({
-          filetypes = { "javascript", "typescript", "json", "yaml", "markdown" }
+          filetypes = { "javascript", "typescript", "json", "yaml", "markdown" },
+          condition = function(utils)
+            if utils.root_has_file(".prettierrc", ".prettierrc.json", ".prettierrc.js", "prettier.config.js") then
+              return true
+            end
 
-          -- This doesn't work with monorepos
-          -- condition = function(utils)
-          --   return utils.has_file(".prettierrc.json", ".prettierrc", ".prettierrc.js", "prettier.config.js")
-          -- end
+            local nested_prettier = scan.scan_dir(vim.fn.getcwd(), {
+              search_pattern = ".prettierrc",
+              hidden = true,
+              depth = 4,
+            })
+
+            return #nested_prettier > 0
+          end
         }),
         null_ls.builtins.diagnostics.stylelint.with({
           extra_filetypes = { "typescript" },
