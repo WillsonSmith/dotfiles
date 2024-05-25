@@ -21,7 +21,7 @@ local null_ls_config = {
       end,
       sources = {
         null_ls.builtins.formatting.prettier.with({
-          filetypes = { "javascript", "typescript", "json", "yaml", "markdown" },
+          filetypes = { "javascript", "typescript", "json", "yaml", "markdown", "typescriptreact", "html" },
           condition = function(utils)
             if utils.root_has_file(".prettierrc", ".prettierrc.json", ".prettierrc.js", "prettier.config.js") then
               return true
