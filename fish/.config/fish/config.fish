@@ -19,6 +19,7 @@ alias lg="lazygit"
 alias nv="nvim"
 alias python="python3"
 
+alias webgen='bun run ~/developer/webgen/index.ts'
 
 function sd -d "Select directory"
   command fd . $argv[1] -t d | fzf --query="$argv[2]"
