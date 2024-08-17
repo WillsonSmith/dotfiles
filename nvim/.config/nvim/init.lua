@@ -6,14 +6,8 @@ vim.g.loaded_netrwPlugin = 1
 require("options")
 require("plugins")
 
-vim.cmd.colorscheme "catppuccin"
-
 vim.g.astro_typescript = 'enable'
 vim.g.astro_styles = 'enable'
-
 vim.filetype.plugin = 'on'
-
 vim.g.skip_ts_context_commentstring_module = true
--- vim.cmd('autocmd! BufRead,BufNewFile *.leaf setfiletype html')
---
 vim.g.neoformat_try_node_exe = 1

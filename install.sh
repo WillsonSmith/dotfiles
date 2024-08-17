@@ -8,6 +8,10 @@ fi
 
 brew bundle --file homebrew/BREWFILE
 
+if ! test -d $HOME/.oh-my-zsh; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" " " --unattended --keep-zshrc
+fi
+
 ## Install dotfiles
 stow fzf --adopt
 stow nvim --adopt
