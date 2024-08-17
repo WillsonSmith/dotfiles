@@ -11,6 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.filetype.add({
+  extension = {
+    mdx = "markdown.mdx",
+  }
+})
+
 -- `mapleader` must be set before `lazy` is called
 vim.g.mapleader = " "
 require("lazy").setup({
@@ -37,12 +43,25 @@ require("lazy").setup({
     }
   },
 
-  "github/copilot.vim",
+
+  -- "github/copilot.vim",
   "folke/which-key.nvim",
   "airblade/vim-gitgutter",
+  {
+    "sbdchd/neoformat",
+    config = function()
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('Formatters', {}),
+        callback = function()
+          vim.cmd('Neoformat')
+        end
+      })
+    end
+  },
 
+  -- require('plugins/snippets'),
   require('plugins/indent_blankline'),
-  require('plugins/null_ls'),
+  -- require('plugins/null_ls'),
   require('plugins/lsp'),
   require('plugins/lualine'),
   require('plugins/telescope'),
@@ -96,6 +115,12 @@ require("lazy").setup({
       use_diagnostic_signs = true
     },
   },
+  {
+    "virchau13/tree-sitter-astro",
+    config = function()
+      require('nvim-treesitter.configs').setup({})
+    end
+  }
 })
 
 -- local cslsp = require('plugins/custom_lsp/server')

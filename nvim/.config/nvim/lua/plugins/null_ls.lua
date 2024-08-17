@@ -13,7 +13,6 @@ local null_ls_config = {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              print("formatting " .. client.name)
               vim.lsp.buf.format({ async = false })
             end,
           })

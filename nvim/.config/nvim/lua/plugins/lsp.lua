@@ -39,10 +39,10 @@ local setup_lsp_keymaps = function()
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, options)
       vim.keymap.set('n', '<leader>f', function()
         -- manual swift formatting until sourcekit-lsp acknowledges formatting support
-        if vim.bo.filetype == 'swift' then
-          formatSwift()
-          return
-        end
+        -- if vim.bo.filetype == 'swift' then
+        --   formatSwift()
+        --   return
+        -- end
 
         vim.lsp.buf.format {
           async = true,
@@ -155,36 +155,50 @@ local lsp_config = {
       end
 
       -- manual swift formatting until sourcekit-lsp acknowledges formatting support
-      if client.name == 'sourcekit' then
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          callback = function()
-            formatSwift()
-          end
-        })
-        return
-      end
+      -- if client.name == 'sourcekit' then
+      --   vim.api.nvim_create_autocmd('BufWritePre', {
+      --     callback = function()
+      --       formatSwift()
+      --     end
+      --   })
+      --   return
+      -- end
 
-      if vim.tbl_contains(IGNORED_FORMATTERS, client.name) then
-        return
-      end
 
-      if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          callback = function()
-            print('formatting ' .. client.name)
-            vim.lsp.buf.format({ async = false })
-          end
-        })
-      end
+      -- DO DIS LATER
+
+      -- if vim.tbl_contains(IGNORED_FORMATTERS, client.name) then
+      --   if (client.resolved_capabilities) then
+      --     client.resolved_capabilities.document_formatting = false
+      --     client.resolved_capabilities.document_range_formatting = false
+      --   end
+      --   return
+      -- end
+      --
+      -- if client.supports_method("textDocument/formatting") then
+      --   vim.api.nvim_create_autocmd('BufWritePre', {
+      --     callback = function()
+      --       vim.lsp.buf.format({ async = false })
+      --     end
+      --   })
+      -- end
     end
 
     local completionCapabilities = cmp_nvim_lsp.default_capabilities();
-
-    lspconfig.sourcekit.setup({
-      on_attach = on_attach,
-      capabilities = completionCapabilities,
-      cmd = { 'xcrun', 'sourcekit-lsp' }
-    })
+    lspconfig.sourcekit.setup {
+      capabilities = vim.tbl_deep_extend('force', completionCapabilities, {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      }),
+    }
+    -- lspconfig.sourcekit.setup({
+    --   on_attach = on_attach,
+    --   capabilities = completionCapabilities,
+    --   cmd = { 'xcrun', 'sourcekit-lsp' }
+    -- })
 
     lspconfig.tsserver.setup({
       on_attach = on_attach,

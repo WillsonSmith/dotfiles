@@ -1,33 +1,42 @@
-brew "asdf"
-brew "bat"
 brew "cmake"
-brew "deno"
-brew "exercism"
-brew "fd"
+brew "neovim"
+brew "swift-format"
+
+# Video
 brew "ffmpeg"
-brew "fish"
-brew "fontforge"
-brew "fzf"
-brew "gawk"
+brew "yt-dlp"
+
+# Git
 brew "gh"
 brew "git"
 brew "git-delta"
-brew "git-filter-repo"
 brew "git-lfs"
-brew "gource"
 brew "lazygit"
-brew "neovim"
-brew "postgresql@14", restart_service: true
-brew "ripgrep"
+
+# CLI Tools
 brew "starship"
-brew "stow"
-brew "swift-format"
-brew "yt-dlp"
+brew "ripgrep"
 brew "zoxide"
+brew "stow"
+brew "fzf"
+brew "fd"
+
+brew "fontforge"
+
+# Languages
+## Lua
+brew "lua"
+
+## Javascript
+### Fast Node Manager
+brew "fnm"
+
+### Typescript
+tap "oven-sh/bun"
+brew "bun"
+brew "deno"
 
 cask "dbeaver-community"
 cask "itsycal"
-cask "ngrok"
+cask "kitty"
 
-tap "oven-sh/bun"
-brew "bun"
