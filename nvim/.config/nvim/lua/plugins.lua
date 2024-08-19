@@ -6,14 +6,11 @@ require("lazy").setup({
   "nvim-lua/plenary.nvim",
   "airblade/vim-gitgutter",
   "virchau13/tree-sitter-astro",
-  { "windwp/nvim-autopairs", event = "InsertEnter" },
-  { "kylechui/nvim-surround", event = "VeryLazy" },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = { use_diagnostic_signs = true }
-  },
+  require("setup.autopairs").lazy,
+  require("setup.surround").lazy,
+  require("setup.trouble").lazy,
   require("setup.lsp").lazy,
+  require("setup.toggleterm").lazy,
   require("setup.neoformat").lazy,
   require("setup.lualine").lazy,
   require("setup.tree").lazy,
