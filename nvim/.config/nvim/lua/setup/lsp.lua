@@ -1,5 +1,4 @@
 local IGNORED_FORMATTERS = {}
-
 local lsp = {}
 
 local function normalKeymap(keymaps, options)
@@ -140,7 +139,7 @@ lsp.lazy = {
     masonSetup()
     cmpSetup()
 
-    local defaultServers = { "tsserver", "rust_analyzer", "astro" }
+    local defaultServers = { "tsserver", "lua_ls", "rust_analyzer", "astro" }
     for _, server in ipairs(defaultServers) do
       lspconfig[server].setup({
         on_attach = setupNavic,
@@ -149,16 +148,16 @@ lsp.lazy = {
     end
 
     -- custom settings
-    lspconfig.lua_ls.setup({
-      settings = {
-        Lua = {
-          workspace = { checkThirdParty = false }
-        },
-        diagnostics = { globals = { "love" } }
-      },
-      on_attach = setupNavic,
-      capabilities = defaultCapabilities
-    })
+    -- lspconfig.lua_ls.setup({
+    --   settings = {
+    --     Lua = {
+    --       workspace = { checkThirdParty = false }
+    --     },
+    --     diagnostics = { globals = { "love" } }
+    --   },
+    --   on_attach = setupNavic,
+    --   capabilities = defaultCapabilities
+    -- })
 
     lsp.keymap()
   end
