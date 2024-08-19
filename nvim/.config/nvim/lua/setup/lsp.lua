@@ -147,18 +147,6 @@ lsp.lazy = {
       })
     end
 
-    -- custom settings
-    -- lspconfig.lua_ls.setup({
-    --   settings = {
-    --     Lua = {
-    --       workspace = { checkThirdParty = false }
-    --     },
-    --     diagnostics = { globals = { "love" } }
-    --   },
-    --   on_attach = setupNavic,
-    --   capabilities = defaultCapabilities
-    -- })
-
     lsp.keymap()
   end
 }
