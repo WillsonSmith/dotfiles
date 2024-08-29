@@ -22,11 +22,13 @@ local preferences = {
   expandtab = true,
   smartindent = true,
   cursorline = true,
+  cursorcolumn = true,
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
-  foldenable = false
+  foldenable = false,
 }
 
 for preference, value in pairs(preferences) do
   vim.opt[preference] = value
 end
+

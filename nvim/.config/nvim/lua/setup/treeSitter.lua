@@ -13,7 +13,8 @@ local required = {
   "dockerfile",
   "regex",
   "vim",
-  "vimdoc"
+  "vimdoc",
+  "swift",
 }
 
 return {

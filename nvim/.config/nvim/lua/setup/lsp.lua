@@ -25,20 +25,21 @@ lsp.keymap = function()
   local globalKeymap = {
     { "<leader>d", vim.diagnostic.open_float },
     { "<leader>q", vim.diagnostic.setloclist },
-    { "[d", vim.diagnostic.goto_prev },
-    { "]d", vim.diagnostic.goto_next },
+    { "[d",        vim.diagnostic.goto_prev },
+    { "]d",        vim.diagnostic.goto_next },
   }
 
   normalKeymap(globalKeymap);
 
   local onAttachKeymap = {
-    { "gD", vim.lsp.buf.declaration },
-    { "gd", vim.lsp.buf.definition },
-    { "K", vim.lsp.buf.hover },
-    { "gi", vim.lsp.buf.implementation },
-    { "<C-k>", vim.lsp.buf.signature_help },
-    { "<leader>D", vim.lsp.buf.type_definition },
-    { "<leader>f", format}
+    { "gD",         vim.lsp.buf.declaration },
+    { "gd",         vim.lsp.buf.definition },
+    { "K",          vim.lsp.buf.hover },
+    { "gi",         vim.lsp.buf.implementation },
+    { "<C-k>",      vim.lsp.buf.signature_help },
+    { "<leader>D",  vim.lsp.buf.type_definition },
+    { "<leader>rn", vim.lsp.buf.rename },
+    { "<leader>f",  format }
   }
 
   vim.api.nvim_create_autocmd("LspAttach", {
@@ -114,8 +115,8 @@ local function cmpSetup()
       documentation = cmp.config.window.bordered()
     },
     sources = cmp.config.sources(
-      {{ name = "nvim_lsp" }, { name = "luasnip" }},
-      {{ name = "buffer" }}
+      { { name = "nvim_lsp" }, { name = "luasnip" } },
+      { { name = "buffer" } }
     )
   })
 end
@@ -146,6 +147,17 @@ lsp.lazy = {
         capabilities = defaultCapabilities
       })
     end
+
+    lspconfig.sourcekit.setup {
+      on_attach = setupNavic,
+      capabilities = vim.tbl_extend('keep', defaultCapabilities, {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      }),
+    }
 
     lsp.keymap()
   end
