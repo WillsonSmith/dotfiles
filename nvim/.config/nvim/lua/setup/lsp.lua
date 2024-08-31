@@ -70,8 +70,12 @@ local dependencies = {
   "folke/neodev.nvim",
   {
     "hrsh7th/nvim-cmp",
-    dependencies = autocompleteDependencies
-  }
+    event = "InsertEnter",
+    dependencies = autocompleteDependencies,
+  },
+  { "hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "hrsh7th/cmp-path", lazy = true },
+  { "hrsh7th/cmp-buffer", lazy = true },
 }
 
 local requiredLanguageServer = {
@@ -114,9 +118,12 @@ local function cmpSetup()
       completions = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered()
     },
-    sources = cmp.config.sources(
-      { { name = "nvim_lsp" }, { name = "luasnip" } },
-      { { name = "buffer" } }
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "buffer" },
+      { name = "path" },
+      { name = "luasnip" },
+    }
     )
   })
 end

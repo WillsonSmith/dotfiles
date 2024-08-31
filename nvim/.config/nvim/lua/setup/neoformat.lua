@@ -1,3 +1,5 @@
+local IGNORED_FORMATTERS = {"swift"}
+
 return {
   lazy = {
     "sbdchd/neoformat",
@@ -5,7 +7,9 @@ return {
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = vim.api.nvim_create_augroup("Formatters", {}),
         callback = function()
-          vim.cmd("Neoformat")
+          if (not vim.tbl_contains(IGNORED_FORMATTERS, vim.bo.filetype)) then
+            vim.cmd("Neoformat")
+          end
         end
       })
 
