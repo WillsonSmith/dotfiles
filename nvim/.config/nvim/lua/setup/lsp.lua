@@ -98,11 +98,12 @@ end
 
 local function cmpSetup()
     local cmp = require("cmp")
+    local luasnip = require("luasnip")
 
     cmp.setup({
         snippets = {
             expand = function(args)
-                require("luasnip").lsp_expand(args.body)
+                require("luasnip").lsp_expand(args)
             end
         },
         mapping = {
@@ -114,7 +115,25 @@ local function cmpSetup()
             ["<C-e>"] = cmp.mapping.close(),
             ["<CR>"] = cmp.mapping.confirm({
                 select = true,
-            })
+            }),
+            ["<tab>"] = cmp.mapping(function(original)
+              if cmp.visible() then
+                cmp.select_next_item()
+              elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+              else
+                original()
+              end
+            end),
+            ["<S-tab>"] = cmp.mapping(function(original)
+              if cmp.visible() then
+                cmp.select_prev_item()
+              elseif luasnip.expand_or_jumpable() then
+                luasnip.jump(-1)
+              else
+                original()
+              end
+            end)
         },
         window = {
             completions = cmp.config.window.bordered(),
