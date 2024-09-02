@@ -38,6 +38,11 @@ telescope.lazy = {
       pickers = {
         live_grep = {
           additional_args = { "--hidden" }
+        },
+        find_files = {
+          find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+          previewer = false,
+          theme = "dropdown"
         }
       }
     })
