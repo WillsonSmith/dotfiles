@@ -18,5 +18,5 @@ require("lazy").setup({
   require("setup.treeSitter").lazy,
   require("setup.telescope").lazy,
   require("setup.contextCommentString").lazy,
-  require("setup.comment").lazy
+  require("setup.comment").lazy,
 })

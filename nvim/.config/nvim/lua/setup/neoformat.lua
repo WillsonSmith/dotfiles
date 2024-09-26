@@ -1,4 +1,4 @@
-local IGNORED_FORMATTERS = {"swift"}
+local IGNORED_FORMATTERS = { --[[ "swift" ]] }
 
 return {
   lazy = {
@@ -12,6 +12,12 @@ return {
           end
         end
       })
+
+      vim.g.neoformat_swift_swiftformat = {
+        exe = "swiftformat",
+        args = { "--config", ".swiftformat" },
+        stdin = 1
+      }
 
       vim.g.neoformat_try_node_exe = 1
     end

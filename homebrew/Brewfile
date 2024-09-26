@@ -1,6 +1,4 @@
-brew "cmake"
 brew "neovim"
-brew "swift-format"
 
 # Video
 brew "ffmpeg"
@@ -36,7 +34,6 @@ tap "oven-sh/bun"
 brew "bun"
 brew "deno"
 
-cask "dbeaver-community"
 cask "itsycal"
 cask "kitty"
 

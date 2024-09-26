@@ -1,5 +1,5 @@
 local LSPFormatterAuGroup = vim.api.nvim_create_augroup("LSPFormatterGroup", {})
-local INCLUDED_FORMATTERS = { "swift", "lua" }
+local INCLUDED_FORMATTERS = { --[[ "swift", ]] "lua" }
 local lsp = {}
 
 local function normalKeymap(keymaps, options)
