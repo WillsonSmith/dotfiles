@@ -17,9 +17,6 @@ brew "ripgrep"
 brew "zoxide"
 brew "stow"
 brew "fzf"
-brew "fd"
-
-brew "fontforge"
 
 # Languages
 ## Lua
