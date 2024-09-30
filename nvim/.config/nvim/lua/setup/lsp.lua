@@ -81,7 +81,7 @@ local dependencies = {
 }
 
 local requiredLanguageServer = {
-  'tsserver',
+  'ts_ls',
   'lua_ls',
   'rust_analyzer',
   'astro',
@@ -174,7 +174,7 @@ lsp.lazy = {
       callback = function() format({ async = false }) end
     })
 
-    local defaultServers = { "tsserver", "lua_ls", "rust_analyzer", "astro" }
+    local defaultServers = { "ts_ls", "lua_ls", "rust_analyzer", "astro" }
     for _, server in ipairs(defaultServers) do
       lspconfig[server].setup({
         on_attach = setupNavic,
