@@ -11,7 +11,7 @@ require("lazy").setup({
   require("setup.trouble").lazy,
   require("setup.luasnip").lazy,
   require("setup.lsp").lazy,
-  require("setup.toggleterm").lazy,
+  -- require("setup.toggleterm").lazy,
   require("setup.neoformat").lazy,
   require("setup.lualine").lazy,
   require("setup.tree").lazy,
