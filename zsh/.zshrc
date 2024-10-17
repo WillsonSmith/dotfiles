@@ -18,7 +18,6 @@ source <(fzf --zsh)
 FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 
 # User configuration
-eval "$(starship init zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
@@ -33,5 +32,13 @@ fi
 
 # Editor
 export EDITOR="nvim"
+
+# Prompt
+PROMPT='%{$fg_bold[cyan]%}%c%{$reset_color%}$(git_prompt_info)%{$fg[green]%}'
+PROMPT+="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%}) → %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg_bold[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 eval "$(zoxide init zsh)"

@@ -16,7 +16,6 @@ fi
 stow fzf --adopt
 stow nvim --adopt
 stow kitty --adopt
-stow starship --adopt
 stow homebrew --adopt
 
 

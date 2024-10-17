@@ -5,14 +5,17 @@ brew "ffmpeg"
 brew "yt-dlp"
 
 # Git
-brew "gh"
 brew "git"
-brew "git-delta"
 brew "git-lfs"
+
+## GitHub–specific
+brew "gh"
+
+## Lazygit
 brew "lazygit"
+brew "git-delta"
 
 # CLI Tools
-brew "starship"
 brew "ripgrep"
 brew "zoxide"
 brew "stow"
