@@ -86,6 +86,7 @@ local requiredLanguageServer = {
   'rust_analyzer',
   'astro',
   'eslint',
+  'marksman'
 }
 
 local function masonSetup()
@@ -174,7 +175,7 @@ lsp.lazy = {
       callback = function() format({ async = false }) end
     })
 
-    local defaultServers = { "ts_ls", "lua_ls", "rust_analyzer", "astro" }
+    local defaultServers = { "ts_ls", "lua_ls", "rust_analyzer", "astro", "marksman" }
     for _, server in ipairs(defaultServers) do
       lspconfig[server].setup({
         on_attach = setupNavic,

@@ -15,6 +15,7 @@ local required = {
   "vim",
   "vimdoc",
   "swift",
+  "markdown",
 }
 
 local function initSwiftInjections()
