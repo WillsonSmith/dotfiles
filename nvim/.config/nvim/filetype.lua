@@ -4,5 +4,6 @@ vim.filetype.add({
   },
   extension = {
     mdx = "markdown.mdx",
+    swiftinterface = "swift.swiftinterface"
   }
 })
