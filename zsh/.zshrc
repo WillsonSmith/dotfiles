@@ -1,6 +1,5 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 # Plugins
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
@@ -12,6 +11,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+source $ZSH/oh-my-zsh.sh
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -46,4 +46,5 @@ export EDITOR="nvim"
 
 alias lg="lazygit"
 alias nv="nvim"
+alias tnv="tmux && nvim"
 
