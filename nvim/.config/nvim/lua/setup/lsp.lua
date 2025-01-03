@@ -1,5 +1,5 @@
 local LSPFormatterAuGroup = vim.api.nvim_create_augroup("LSPFormatterGroup", {})
-local INCLUDED_FORMATTERS = { --[[ "swift", ]] "lua" }
+local INCLUDED_FORMATTERS = { --[[ "swift", ]] "lua", "css" }
 local lsp = {}
 
 local function normalKeymap(keymaps, options)
@@ -47,6 +47,16 @@ lsp.keymap = function()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
+      if vim.bo.filetype == "swift" then
+        -- if the Langauge is swift then then LSP string highlighting should be disabled
+        -- This is so that custom treesitter injecitons for html, css, and js work
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+        if client then
+          vim.api.nvim_set_hl(0, "@lsp.type.string.swift", {})
+        end
+      end
+
       vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
       local options = { buffer = ev.buf }
@@ -86,6 +96,7 @@ local requiredLanguageServer = {
   'rust_analyzer',
   'astro',
   'eslint',
+  'denols',
   'marksman'
 }
 
@@ -175,7 +186,7 @@ lsp.lazy = {
       callback = function() format({ async = false }) end
     })
 
-    local defaultServers = { "ts_ls", "lua_ls", "rust_analyzer", "astro", "marksman" }
+    local defaultServers = { "denols", "ts_ls", "lua_ls", "rust_analyzer", "astro", "marksman" }
     for _, server in ipairs(defaultServers) do
       lspconfig[server].setup({
         on_attach = setupNavic,

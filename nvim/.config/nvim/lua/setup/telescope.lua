@@ -1,3 +1,5 @@
+-- CONFIG
+--
 local fzfBuildCommand =
 "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build";
 
@@ -19,7 +21,8 @@ telescope.keymaps = function()
     { "<leader>ff", included.find_files },
     { "<leader>fg", included.live_grep },
     { "<leader>fb", included.buffers },
-    { "<leader>fh", included.help_tags }
+    { "<leader>fh", included.help_tags },
+    { "<leader>ss", included.spell_suggest }
   }
 
   for _, keymap in pairs(keymaps) do
@@ -42,6 +45,9 @@ telescope.lazy = {
         find_files = {
           find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
           previewer = false,
+          theme = "dropdown"
+        },
+        spell_suggest = {
           theme = "dropdown"
         }
       }

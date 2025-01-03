@@ -46,5 +46,6 @@ export EDITOR="nvim"
 
 alias lg="lazygit"
 alias nv="nvim"
-alias tnv="tmux && nvim"
 
+# Tools
+alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"

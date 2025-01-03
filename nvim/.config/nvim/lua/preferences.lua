@@ -3,7 +3,7 @@ local preferences = {
   number = true,
   relativenumber = true,
   mouse = "a",
-  clipboard = "unnamedplus",
+  -- clipboard = "unnamedplus",
   breakindent = true,
   undofile = true,
   backupdir = "/tmp/nvim/backup",
@@ -47,6 +47,7 @@ end
 --     vim.bo.expandtab = true -- Use spaces instead of tabs
 --   end,
 -- })
+--
 
 vim.api.nvim_create_augroup("MarkdownFileType", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {

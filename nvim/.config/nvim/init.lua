@@ -20,3 +20,15 @@ end
 
 -- Bind the function to a key
 vim.keymap.set("n", "<leader>gp", function() display_tmux_popup_with_glow() end, { noremap = true, silent = true })
+
+
+-- copy to clipboard
+vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+yg_")
+vim.keymap.set("n", "<leader>y", "\"+y")
+
+-- paste from clipboard
+vim.keymap.set("n", "<leader>p", "\"+p")
+vim.keymap.set("n", "<leader>P", "\"+p")
+vim.keymap.set("v", "<leader>p", "\"+p")
+vim.keymap.set("v", "<leader>P", "\"+p")
