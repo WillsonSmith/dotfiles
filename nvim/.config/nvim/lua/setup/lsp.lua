@@ -93,11 +93,14 @@ local dependencies = {
 local requiredLanguageServer = {
   'ts_ls',
   'lua_ls',
+  'pico8_ls',
   'rust_analyzer',
   'astro',
   'eslint',
   'denols',
-  'marksman'
+  'marksman',
+  'html',
+  'cssls'
 }
 
 local function masonSetup()
@@ -173,6 +176,19 @@ lsp.lazy = {
   "neovim/nvim-lspconfig",
   dependencies = dependencies,
   config = function()
+    -- vim.api.nvim_create_autocmd({ 'BufNew', 'BufEnter' }, {
+    --   pattern = { '*.p8' },
+    --   callback = function(args)
+    --     vim.lsp.start({
+    --       name = 'pico8-ls',
+    --       cmd = { 'pico8-ls', '--stdio' },
+    --       root_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(args.buf)),
+    --       -- Setup your keybinds in the on_attach function
+    --       -- on_attach = on_attach,
+    --     })
+    --   end
+    -- })
+
     require("neodev").setup();
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -186,13 +202,18 @@ lsp.lazy = {
       callback = function() format({ async = false }) end
     })
 
-    local defaultServers = { "denols", "ts_ls", "lua_ls", "rust_analyzer", "astro", "marksman" }
+    local defaultServers = { "denols", "ts_ls", "lua_ls", "pico8_ls", "rust_analyzer", "astro", "marksman", "html",
+      "cssls" }
     for _, server in ipairs(defaultServers) do
       lspconfig[server].setup({
         on_attach = setupNavic,
         capabilities = defaultCapabilities
       })
     end
+
+    lspconfig["pico8_ls"].setup({
+      pattern = { "*.p8" }
+    })
 
     lspconfig.sourcekit.setup {
       on_attach = setupNavic,

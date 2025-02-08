@@ -49,3 +49,5 @@ alias nv="nvim"
 
 # Tools
 alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
+
+alias picodev="cd ~/Library/Application\ Support/pico-8; nv ."

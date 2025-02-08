@@ -2,7 +2,7 @@ require("setup.lazy").init();
 
 require("lazy").setup({
   require("theming.setup").lazy,
-
+  "ggml-org/llama.vim",
   "nvim-lua/plenary.nvim",
   "airblade/vim-gitgutter",
   "virchau13/tree-sitter-astro",

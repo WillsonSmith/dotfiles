@@ -8,8 +8,6 @@ keybind = ctrl+space>l=goto_split:right
 keybind = ctrl+space>k=goto_split:top
 keybind = ctrl+space>j=goto_split:bottom
 
-#keybind = ctrl+space>g=
-
 font-size = 14
 
 macos-titlebar-style = transparent

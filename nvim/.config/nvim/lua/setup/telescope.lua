@@ -43,7 +43,7 @@ telescope.lazy = {
           additional_args = { "--hidden" }
         },
         find_files = {
-          find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+          find_command = { 'rg', '--files', '--iglob', '!{.git,.build}', '--hidden' },
           previewer = false,
           theme = "dropdown"
         },
