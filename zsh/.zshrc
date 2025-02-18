@@ -22,10 +22,6 @@ eval "$(zoxide init zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-mux() {
-  eval $(jmux $@)
-}
-
 export PATH="/Users/willsonsmith/.bun/bin:$PATH"
 if test -d /Applications/love.app/Contents/MacOS ; then
   path+=('/Applications/love.app/Contents/MacOS')
