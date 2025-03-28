@@ -36,7 +36,7 @@ lsp.keymap = function()
   local onAttachKeymap = {
     { "gD",         vim.lsp.buf.declaration },
     { "gd",         vim.lsp.buf.definition },
-    { "K",          vim.lsp.buf.hover },
+    { "K",          function() vim.lsp.buf.hover({ border = "rounded" }) end },
     { "gi",         vim.lsp.buf.implementation },
     { "<C-k>",      vim.lsp.buf.signature_help },
     { "<leader>D",  vim.lsp.buf.type_definition },
@@ -60,6 +60,8 @@ lsp.keymap = function()
       vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
       local options = { buffer = ev.buf }
+
+
       normalKeymap(onAttachKeymap, options)
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, options)
     end
@@ -201,6 +203,8 @@ lsp.lazy = {
       group = LSPFormatterAuGroup,
       callback = function() format({ async = false }) end
     })
+
+
 
     local defaultServers = { "denols", "ts_ls", "lua_ls", "pico8_ls", "rust_analyzer", "astro", "marksman", "html",
       "cssls" }
