@@ -47,3 +47,5 @@ alias nv="nvim"
 alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
 
 alias picodev="cd ~/Library/Application\ Support/pico-8; nv ."
+
+alias gen="$HOME/Developer/Generators/gen/.build/debug/gen"
