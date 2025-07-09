@@ -47,15 +47,15 @@ lsp.keymap = function()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
-      if vim.bo.filetype == "swift" then
-        -- if the Langauge is swift then then LSP string highlighting should be disabled
-        -- This is so that custom treesitter injecitons for html, css, and js work
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-        if client then
-          vim.api.nvim_set_hl(0, "@lsp.type.string.swift", {})
-        end
-      end
+      -- if vim.bo.filetype == "swift" then
+      --   -- if the Langauge is swift then then LSP string highlighting should be disabled
+      --   -- This is so that custom treesitter injecitons for html, css, and js work
+      --   local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      --
+      --   if client then
+      --     vim.api.nvim_set_hl(0, "@lsp.type.string.swift", {})
+      --   end
+      -- end
 
       vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
@@ -219,7 +219,18 @@ lsp.lazy = {
       pattern = { "*.p8" }
     })
 
-    lspconfig.sourcekit.setup {
+    local custom_sourcekit =
+    '/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp'
+
+    local sourcekit_cmd
+    -- if vim.fn.filereadable(custom_sourcekit) == 1 then
+    --   sourcekit_cmd = { custom_sourcekit }
+    -- else
+    --   sourcekit_cmd = { 'sourcekit-lsp' } -- fallback to default available in PATH
+    -- end
+
+    require('lspconfig').sourcekit.setup {
+      -- cmd = sourcekit_cmd,
       on_attach = setupNavic,
       capabilities = vim.tbl_deep_extend('force', defaultCapabilities, {
         workspace = {

@@ -1,4 +1,4 @@
-local IGNORED_FORMATTERS = { --[[ "swift" ]] }
+local IGNORED_FORMATTERS = { --[[ "swift" ]] "xml" }
 
 return {
   lazy = {

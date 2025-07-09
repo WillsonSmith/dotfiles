@@ -35,6 +35,5 @@ brew "bun"
 brew "deno"
 
 cask "itsycal"
-cask "kitty"
 cask "love"
 
