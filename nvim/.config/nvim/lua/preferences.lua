@@ -33,6 +33,7 @@ for preference, value in pairs(preferences) do
   vim.opt[preference] = value
 end
 
+vim.g.mapleader = " "
 
 -- DISABLED, using 4 Spaces now
 -- IDK why but Swift is ignoring global settings
@@ -48,6 +49,7 @@ end
 --   end,
 -- })
 --
+
 
 vim.api.nvim_create_augroup("MarkdownFileType", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {

@@ -1,4 +1,7 @@
 require("preferences")
+require("plugins")
+require("lsp")
+
 
 -- require("globals.preInit")
 -- require("preferences")

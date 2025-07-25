@@ -42,6 +42,7 @@ export EDITOR="nvim"
 
 alias lg="lazygit"
 alias nv="nvim"
+alias nvn="/Users/willsonsmith/Downloads/nvim-macos-arm64/bin/nvim"
 
 # Tools
 alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
