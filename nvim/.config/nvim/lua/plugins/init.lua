@@ -1,11 +1,3 @@
-require("plugins.theme")
-require("plugins.treesitter")
-require("plugins.telescope")
-require("plugins.lualine")
-require("plugins.oil")
-require("plugins.cmp")
-require("plugins.neoformat")
-
 vim.pack.add {
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/airblade/vim-gitgutter",
@@ -17,4 +9,13 @@ vim.pack.add {
 require("nvim-autopairs").setup {}
 require("nvim-surround").setup {}
 require("Comment").setup {}
+
+-- Manual setup configurations
+require("plugins.theme")
+require("plugins.treesitter")
+require("plugins.telescope")
+require("plugins.lualine")
+require("plugins.oil")
+require("plugins.cmp")
+require("plugins.neoformat")
 
