@@ -7,6 +7,11 @@ vim.pack.add {
 }
 local cmp = require("cmp")
 cmp.setup {
+  snippet = {
+    expand = function(arg)
+      vim.snippet.expand(arg.body)
+    end
+  },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),

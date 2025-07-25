@@ -4,6 +4,7 @@ require("plugins.telescope")
 require("plugins.lualine")
 require("plugins.oil")
 require("plugins.cmp")
+require("plugins.neoformat")
 
 vim.pack.add {
   "https://github.com/nvim-lua/plenary.nvim",
