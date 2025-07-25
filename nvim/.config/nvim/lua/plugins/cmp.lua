@@ -5,6 +5,8 @@ vim.pack.add {
   "https://github.com/hrsh7th/cmp-cmdline",
   "https://github.com/hrsh7th/nvim-cmp",
 }
+
+require("snippets").register_cmp_source()
 local cmp = require("cmp")
 cmp.setup {
   snippet = {
@@ -22,30 +24,13 @@ cmp.setup {
     ["<CR>"] = cmp.mapping.confirm({
       select = true,
     }),
-    -- ["<tab>"] = cmp.mapping(function(original)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   else
-    --     original()
-    --   end
-    -- end),
-    -- ["<S-tab>"] = cmp.mapping(function(original)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.jump(-1)
-    --   else
-    --     original()
-    --   end
-    -- end)
   },
   window = {
     completions = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered()
   },
   sources = {
+    { name = "snp" },
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
