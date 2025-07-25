@@ -36,6 +36,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local navic = require("nvim-navic")
         navic.attach(client, args.buf)
       end
+
+      if client.server_capabilities.codeActionProvider then
+        vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf })
+      end
     end
 
     vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { buffer = args.buf })
