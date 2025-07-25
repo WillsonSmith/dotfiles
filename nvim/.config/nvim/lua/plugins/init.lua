@@ -18,4 +18,3 @@ require("nvim-autopairs").setup {}
 require("nvim-surround").setup {}
 require("Comment").setup {}
 
-vim.g.gitgutter_enabled = 1

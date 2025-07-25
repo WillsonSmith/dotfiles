@@ -33,6 +33,9 @@ for preference, value in pairs(preferences) do
   vim.opt[preference] = value
 end
 
+-- Globals
+vim.g.gitgutter_enabled = 1
+
 -- Global keymaps
 -- copy to clipboard
 vim.keymap.set("v", "<leader>y", "\"+y")
