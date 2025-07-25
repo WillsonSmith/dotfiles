@@ -30,6 +30,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       if client.server_capabilities.renameProvider then
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
       end
+
+
+      if client.server_capabilities.documentSymbolProvider then
+        local navic = require("nvim-navic")
+        navic.attach(client, args.buf)
+      end
     end
 
     vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { buffer = args.buf })
