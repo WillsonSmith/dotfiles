@@ -206,7 +206,7 @@ lsp.lazy = {
 
 
 
-    local defaultServers = { "denols", "ts_ls", "lua_ls", "pico8_ls", "rust_analyzer", "astro", "marksman", "html",
+    local defaultServers = { "denols", "pico8_ls", "rust_analyzer", "astro", "marksman", "html",
       "cssls" }
     for _, server in ipairs(defaultServers) do
       lspconfig[server].setup({
@@ -214,6 +214,33 @@ lsp.lazy = {
         capabilities = defaultCapabilities
       })
     end
+
+    lspconfig.lua_ls.setup {
+      on_attach = setupNavic,
+      capabilities = defaultCapabilities,
+      globals = { 'vim' },
+      settings = {
+        Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using
+            version = 'LuaJIT',
+            path = vim.split(package.path, ';'),
+          },
+          diagnostics = {
+            globals = { 'vim' }, -- Recognize the `vim` global
+          },
+          workspace = {
+            library = {
+              vim.env.VIMRUNTIME,
+              -- "${3rd}/luv/library",
+              -- "${3rd}/busted/library",
+            },
+            checkThirdParty = false, -- Optional: avoid annoying prompts
+          },
+          telemetry = { enable = false },
+        },
+      },
+    }
 
     lspconfig["pico8_ls"].setup({
       pattern = { "*.p8" }

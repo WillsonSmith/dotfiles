@@ -8,6 +8,10 @@ keybind = ctrl+space>l=goto_split:right
 keybind = ctrl+space>k=goto_split:top
 keybind = ctrl+space>j=goto_split:bottom
 
-font-size = 14
+font-size = 15
+font-family = "Atkinson Hyperlegible Mono"
+font-feature = "+liga"
+# font-thicken
 
 macos-titlebar-style = transparent
+
