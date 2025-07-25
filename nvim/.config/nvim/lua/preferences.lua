@@ -3,7 +3,6 @@ local preferences = {
   number = true,
   relativenumber = true,
   mouse = "a",
-  -- clipboard = "unnamedplus",
   breakindent = true,
   undofile = true,
   backupdir = "/tmp/nvim/backup",
@@ -29,12 +28,12 @@ local preferences = {
   foldenable = false,
 }
 
+vim.g.mapleader = " "
 for preference, value in pairs(preferences) do
   vim.opt[preference] = value
 end
 
-vim.g.mapleader = " "
-
+-- Global keymaps
 -- copy to clipboard
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+yg_")
