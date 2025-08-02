@@ -12,23 +12,46 @@ vim.pack.add {
   "https://github.com/zbirenbaum/copilot.lua",
 }
 
+local function build_avante(path)
+  local build_path = path .. "/build"
+  if vim.fn.isdirectory(build_path) == 0 then
+    vim.fn.system({ "make", "-C", path })
+  end
+end
+
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(event)
     if event.data.kind == "install" and event.data.spec.name == "avante" then
-      local path = event.data.path
-      -- This callback isn't triggering as expected; investigate event conditions or debug the execution flow.
-      vim.fn.system({ "make" }, path)
+      vim.fn.system({ "make", "-C", event.data.path })
     end
   end,
 })
 
-require("copilot").setup {}
+local path = nil
+for _, plugin in ipairs(vim.pack.get()) do
+  if plugin.spec.name == "avante" then
+    path = plugin.path
+    break
+  end
+end
+
+if path then
+  build_avante(path)
+  print(path)
+else
+  vim.notify("Avante plugin not found", vim.log.levels.ERROR)
+end
+
+-- require("copilot").setup {}
 
 require("avante").setup {
   -- provider = "ollama",
-  provider = "copilot",
-  -- provider = "gemini",
+  -- provider = "copilot",
+  provider = "gemini",
   providers = {
+    gemini = {
+      model = "gemini-2.0-flash"
+    },
     ollama = {
       endpoint = "http://localhost:11434",
       model = "qwen3-coder"
