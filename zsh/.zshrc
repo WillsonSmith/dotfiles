@@ -38,11 +38,12 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 
 # Editor
-export EDITOR="nvim"
-
-alias lg="lazygit"
 alias nv="nvim"
 alias nvn="/Users/willsonsmith/Downloads/nvim-macos-arm64/bin/nvim"
+
+export EDITOR="/Users/willsonsmith/Downloads/nvim-macos-arm64/bin/nvim"
+
+alias lg="lazygit"
 
 # Tools
 alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
@@ -50,3 +51,8 @@ alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
 alias picodev="cd ~/Library/Application\ Support/pico-8; nv ."
 
 alias gen="$HOME/Developer/Generators/gen/.build/debug/gen"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/willsonsmith/.lmstudio/bin"
+# End of LM Studio CLI section
+
