@@ -26,8 +26,8 @@ require("copilot").setup {}
 
 require("avante").setup {
   -- provider = "ollama",
-  -- provider = "copilot",
-  provider = "gemini",
+  provider = "copilot",
+  -- provider = "gemini",
   providers = {
     ollama = {
       endpoint = "http://localhost:11434",
