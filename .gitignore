@@ -1,3 +1,4 @@
 .DS_Store
 tmux/.tmux/catppuccin
 zsh/.config/zsh/private
+zsh/.config/zsh/.zsh_history
