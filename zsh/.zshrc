@@ -13,6 +13,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+source ~/.zsh/private/api_keys.zsh
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
