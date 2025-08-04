@@ -5,19 +5,19 @@ git_prompt_info() {
     if [[ -n $git_status ]]; then
         case $git_status in
             ahead)
-                echo " [$branch|%F{yellow}$git_status%f]"
+                echo " [$branch|%F{yellow}↑%f]"
                 ;;
             behind)
-                echo " [$branch|%F{red}$git_status%f]"
+                echo " [$branch|%F{red}↓%f]"
                 ;;
             diverged)
-                echo " [$branch|%F{blue}$git_status%f]"
+                echo " [$branch|%F{blue}↹%f]"
                 ;;
             *)
                 echo " [$branch|%F{cyan}$git_status%f]"
                 ;;
         esac
     else
-        echo " [$branch|%F{green}up-to-date%f]"
+        echo " [$branch|%F{green}●%f]"
     fi
 }

@@ -1,7 +1,6 @@
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
 
-
 # User configuration
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -25,9 +24,8 @@ export EDITOR="/Users/willsonsmith/Downloads/nvim-macos-arm64/bin/nvim"
 
 # Tools
 alias lg="lazygit"
-
-alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
 alias gen="$HOME/Developer/Generators/gen/.build/debug/gen"
+alias mv-ss="~/Developer/command-line/mv-ss/.build/release/mv-ss"
 
 # PATH
 export PATH="/Users/willsonsmith/.bun/bin:$PATH"

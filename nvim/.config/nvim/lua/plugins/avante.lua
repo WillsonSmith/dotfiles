@@ -37,15 +37,15 @@ end
 
 if path then
   build_avante(path)
-  print(path)
 else
   vim.notify("Avante plugin not found", vim.log.levels.ERROR)
 end
 
--- require("copilot").setup {}
+require("copilot").setup {}
 
 require("avante").setup {
   -- provider = "ollama",
+  -- provider = "lmstudio",
   -- provider = "copilot",
   provider = "gemini",
   providers = {
@@ -56,5 +56,12 @@ require("avante").setup {
       endpoint = "http://localhost:11434",
       model = "qwen3-coder"
     },
+    lmstudio = {
+      __inherited_from = "openai",
+      endpoint = "http://localhost:1234/v1",
+      model = "qwen/qwen3-30b-a3b-2507",
+      -- api_key_name = "LM_API_KEY",
+    },
   }
 }
+
