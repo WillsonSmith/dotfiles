@@ -44,17 +44,17 @@ end
 require("copilot").setup {}
 
 require("avante").setup {
-  -- provider = "ollama",
+  provider = "ollama",
   -- provider = "lmstudio",
   -- provider = "copilot",
-  provider = "gemini",
+  -- provider = "gemini",
   providers = {
     gemini = {
       model = "gemini-2.0-flash"
     },
     ollama = {
       endpoint = "http://localhost:11434",
-      model = "qwen3-coder"
+      model = "gpt-oss"
     },
     lmstudio = {
       __inherited_from = "openai",
