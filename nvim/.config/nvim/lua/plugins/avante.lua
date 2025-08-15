@@ -10,6 +10,7 @@ vim.pack.add {
 
   -- optionals
   "https://github.com/zbirenbaum/copilot.lua",
+  "https://github.com/nvim-telescope/telescope.nvim",
 }
 
 local function build_avante(path)
@@ -44,6 +45,9 @@ end
 require("copilot").setup {}
 
 require("avante").setup {
+  selector = {
+    provider = "telescope"
+  },
   provider = "ollama",
   -- provider = "lmstudio",
   -- provider = "copilot",
