@@ -3,3 +3,4 @@ tmux/.tmux/catppuccin
 zsh/.config/zsh/private
 zsh/.config/zsh/.zsh_history
 zsh/.config/zsh/.zcompdump
+zsh/.config/zsh/.zsh_sessions
