@@ -12,9 +12,11 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 source <(fzf --zsh)
 FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 
+. "$ZDOTDIR/functions/completions.zsh"
 . "$ZDOTDIR/functions/git.zsh"
-PROMPT="%F{green}%n%f@%F{blue}%m%f:%F{yellow}%~%f$(git_prompt_info) → "
 
+setopt PROMPT_SUBST         # important: enables $(...) in PROMPT
+PROMPT='%F{green}%n%f@%F{blue}%m%f:%F{yellow}%~%f$(git_prompt_info) → '
 
 # Editor
 alias nv="nvim"
