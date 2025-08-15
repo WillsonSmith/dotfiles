@@ -4,8 +4,9 @@ _comp_options+=(globdots) # With hidden files
 # User configuration
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init zsh)"
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
+eval "$(zoxide init zsh)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 ## FZF and fuzzie completions
