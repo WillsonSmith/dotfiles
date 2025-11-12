@@ -93,7 +93,13 @@ return util.map(
         import FoundationNetworking
       #endif
       ]]
-    }
+    },
+    {
+      trigger = "elp",
+      body = [[
+      .package(url: "https://github.com/sliemeobn/elementary.git", from: "0.5.5"),
+      ]]
+    },
   },
   function(snippet)
     snippet.body = util.dedent(snippet.body)
