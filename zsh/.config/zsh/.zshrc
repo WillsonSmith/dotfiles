@@ -35,6 +35,7 @@ export PATH="/Users/willsonsmith/.bun/bin:$PATH"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/willsonsmith/.lmstudio/bin"
 # End of LM Studio CLI section
+export PATH="/Users/willsonsmith/.config/cache/.bun/bin:$PATH"
 
 bindkey -v
 export KEYTIMEOUT=1
