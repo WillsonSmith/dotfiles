@@ -3,7 +3,6 @@ local preferences = {
   number = true,
   relativenumber = true,
   mouse = "a",
-  -- clipboard = "unnamedplus",
   breakindent = true,
   undofile = true,
   backupdir = "/tmp/nvim/backup",
@@ -29,33 +28,22 @@ local preferences = {
   foldenable = false,
 }
 
+vim.g.mapleader = " "
 for preference, value in pairs(preferences) do
   vim.opt[preference] = value
 end
 
+-- Globals
+vim.g.gitgutter_enabled = 1
 
--- DISABLED, using 4 Spaces now
--- IDK why but Swift is ignoring global settings
--- Set tabs to 2 spaces
--- vim.api.nvim_create_augroup("SwiftFileType", { clear = true })
--- vim.api.nvim_create_autocmd("FileType", {
---   group = "SwiftFileType",
---   pattern = "swift",
---   callback = function()
---     vim.bo.tabstop = 2      -- Set tabstop to 2 spaces
---     vim.bo.shiftwidth = 2   -- Set shiftwidth to 2 spaces
---     vim.bo.expandtab = true -- Use spaces instead of tabs
---   end,
--- })
---
+-- Global keymaps
+-- copy to clipboard
+vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+yg_")
+vim.keymap.set("n", "<leader>y", "\"+y")
 
-vim.api.nvim_create_augroup("MarkdownFileType", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  group = "MarkdownFileType",
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.spelllang = "en_us"
-    vim.opt_local.spell = true
-    -- vim.opt_local.textwidth = 80
-  end
-})
+-- paste from clipboard
+vim.keymap.set("n", "<leader>p", "\"+p")
+vim.keymap.set("n", "<leader>P", "\"+p")
+vim.keymap.set("v", "<leader>p", "\"+p")
+vim.keymap.set("v", "<leader>P", "\"+p")

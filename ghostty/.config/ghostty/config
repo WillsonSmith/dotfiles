@@ -1,4 +1,4 @@
-theme = catppuccin-frappe
+theme = Catppuccin Frappe
 
 keybind = ctrl+space>v=new_split:right
 keybind = ctrl+space>s=new_split:down

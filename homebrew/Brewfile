@@ -1,5 +1,8 @@
 brew "neovim"
 
+# Language servers
+brew "lua-language-server"
+
 # Video
 brew "ffmpeg"
 brew "yt-dlp"
